@@ -105,15 +105,15 @@
 <li>如何使用 Jacman 主题: <a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="noopener">http://wuchong.me/blog/2014/11/20/how-to-use-jacman/</a></li>
 <li><a href="https://github.com/wuchong/jacman/wiki/配置指南" target="_blank" rel="noopener">https://github.com/wuchong/jacman/wiki/配置指南</a></li>
 <li><a href="https://www.cnblogs.com/onepeace/p/4668780.html" target="_blank" rel="noopener">https://www.cnblogs.com/onepeace/p/4668780.html</a></li>
-<li>Hexo深坑之旅 - 搭建swiftype站内搜索的几点说明<a href="https://www.jianshu.com/p/f2df26584e87" target="_blank" rel="noopener">https://www.jianshu.com/p/f2df26584e87</a><br>在5.Hexo搭建swiftype站内搜索的链接中有个错误：<blockquote>
-<p>在google和百度的搜索代码上，再添加swftype的搜索代码，如下直接copy过去就行：<br>跟在这句后面的代码少了个}。下面是正确的代码：<br>‘’’<br>&lt;% if   (theme.swift_search&amp;&amp;theme.swift_search.enable){ %&gt;</p>
-<pre><code>   &lt;form class=&quot;search&quot; action=&quot;&lt;%- config.root %&gt;search/index.html&quot; method=&quot;get&quot; accept-charset=&quot;utf-8&quot;&gt;
-       &lt;label&gt;Search&lt;/label&gt;
-       &lt;input type=&quot;text&quot; class=&quot;st-default-search-input&quot; maxlength=&quot;20&quot; placeholder=&quot;Search&quot; /&gt;
-   &lt;/form&gt;
-&lt;% } else if ...（接其它搜索的判断）</code></pre><p>‘’’</p>
+<li>Hexo深坑之旅 - 搭建swiftype站内搜索的几点说明<a href="https://www.jianshu.com/p/f2df26584e87" target="_blank" rel="noopener">https://www.jianshu.com/p/f2df26584e87</a><br>在5.Hexo搭建swiftype站内搜索的链接下面这句后面的代码有个错误：<blockquote>
+<p>在google和百度的搜索代码上，再添加swftype的搜索代码，如下直接copy过去就行：</p>
 </blockquote>
-<h1 id="用markdown写下你的第一个md文档"><a href="#用markdown写下你的第一个md文档" class="headerlink" title="用markdown写下你的第一个md文档"></a>用markdown写下你的第一个md文档</h1>相关参考链接：</li>
+</li>
+</ol>
+<p>跟在这句后面的代码少了个}。下面是正确的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if   (theme.swift_search&amp;&amp;theme.swift_search.enable)&#123; %&gt;</span><br><span class="line">						&lt;form class=&quot;search&quot; action=&quot;&lt;%- config.root %&gt;search/index.html&quot; method=&quot;get&quot; accept-charset=&quot;utf-8&quot;&gt;</span><br><span class="line">							&lt;label&gt;Search&lt;/label&gt;</span><br><span class="line">							&lt;input type=&quot;text&quot; class=&quot;st-default-search-input&quot; maxlength=&quot;20&quot; placeholder=&quot;Search&quot; /&gt;</span><br><span class="line">						&lt;/form&gt;</span><br><span class="line"> 					&lt;% &#125; else if ...（接其它搜索的判断）</span><br></pre></td></tr></table></figure>
+<h1 id="用markdown写下你的第一个md文档"><a href="#用markdown写下你的第一个md文档" class="headerlink" title="用markdown写下你的第一个md文档"></a>用markdown写下你的第一个md文档</h1><p>相关参考链接：</p>
+<ol>
 <li>基本语法：<a href="https://www.jianshu.com/p/de9c98bba332" target="_blank" rel="noopener">https://www.jianshu.com/p/de9c98bba332</a></li>
 </ol>
 
@@ -354,7 +354,81 @@
 </div>
     </div>
     <footer><div id="footer" >
-	
+	<% if(theme.author_img){ %>
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	<% } %>
+	<% if(theme.author.intro_line1 || theme.author.intro_line2){ %>
+	<section class="info">
+		<p> <%= theme.author.intro_line1 || "" %> <br/>
+			<%= theme.author.intro_line2 || "" %></p>
+	</section>
+	 <% } %>
+	<div class="social-font" class="clearfix">
+		<% if(theme.author.weibo){ %>
+		<a href="http://weibo.com/<%= theme.author.weibo %>" target="_blank" class="icon-weibo" title="微博"></a>
+		<% } %>
+		<% if(theme.author.github){ %>
+		<a href="https://github.com/<%=theme.author.github %>" target="_blank" class="icon-github" title="github"></a>
+		<% } %>
+		<% if(theme.author.stackoverflow){ %>
+		<a href="http://stackoverflow.com/users/<%=theme.author.stackoverflow %>" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		<% } %>
+		<% if(theme.author.twitter){ %>
+		<a href="https://twitter.com/<%=theme.author.twitter %>" target="_blank" class="icon-twitter" title="twitter"></a>
+		<% } %>
+		<% if(theme.author.facebook){ %>
+		<a href="https://www.facebook.com/<%=theme.author.facebook %>" target="_blank" class="icon-facebook" title="facebook"></a>
+		<% } %>
+		<% if(theme.author.linkedin){ %>
+		<a href="https://www.linkedin.com/in/<%=theme.author.linkedin %>" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		<% } %>
+		<% if(theme.author.douban){ %>
+		<a href="https://www.douban.com/people/<%=theme.author.douban %>" target="_blank" class="icon-douban" title="豆瓣"></a>
+		<% } %>
+		<% if(theme.author.zhihu){ %>
+		<a href="http://www.zhihu.com/people/<%=theme.author.zhihu %>" target="_blank" class="icon-zhihu" title="知乎"></a>
+		<% } %>
+		<% if(theme.author.google_plus){ %>
+		<a href="https://plus.google.com/<%=theme.author.google_plus %>?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		<% } %>
+		<% if(theme.author.email){ %>
+		<a href="mailto:<%=theme.author.email %>" target="_blank" class="icon-email" title="Email Me"></a>
+		<% } %>
+	</div>
+			<%  Array.prototype.S=String.fromCharCode(2);
+			  Array.prototype.in_array=function(e){
+    			var r=new RegExp(this.S+e+this.S);
+    			return (r.test(this.S+this.join(this.S)+this.S));
+				};
+				var cc = new Array('by','by-nc','by-nc-nd','by-nc-sa','by-nd','by-sa','zero'); %>
+		<% if (cc.in_array(theme.creative_commons) ) { %>
+				<div class="cc-license">
+          <a href="http://creativecommons.org/licenses/<%= theme.creative_commons %>/4.0" class="cc-opacity" target="_blank">
+            <img src="<%- config.root %>img/cc-<%= theme.creative_commons %>.svg" alt="Creative Commons" />
+          </a>
+        </div>
+    <% } %>
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © <%= new Date().getFullYear() %> 
+		<% if (config.author) { %>
+		<a href="<%= config.root %>about" target="_blank" title="<%= config.author %>"><%= config.author %></a>
+		<% } else {%>
+		<a href="<%= config.url %>" title="<%= config.title %>"><%= config.title %></a>
+		<% } %>
+		
+		</p>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<span id="busuanzi_container_site_pv">
+      Total visits: <span id="busuanzi_value_site_pv"></span>
+</span>
+<span id="busuanzi_container_site_uv">
+      You are Visiter No.<span id="busuanzi_value_site_uv"></span>
+</span>
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
